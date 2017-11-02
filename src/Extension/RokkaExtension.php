@@ -12,9 +12,9 @@ class RokkaExtension extends \Twig_Extension
      */
     private $rokka;
 
-    public function __construct($org, $key, TemplateHelperCallbacksAbstract $callbacks = null, $publicRokkaDomain = null)
+    public function __construct(string $org, string $key, string $webDir, TemplateHelperCallbacksAbstract $callbacks = null, $publicRokkaDomain = null)
     {
-        $this->rokka = new RokkaRuntimeExtension($org, $key, $callbacks, $publicRokkaDomain);
+        $this->rokka = new RokkaRuntimeExtension($org, $key, $webDir, $callbacks, $publicRokkaDomain);
     }
 
     public function getFilters()
