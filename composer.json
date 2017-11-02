@@ -1,0 +1,33 @@
+{
+    "name": "rokka/twig",
+    "type": "library",
+    "description": "Rokka.io twig extension",
+    "keywords": [
+        "rokka",
+        "rokka.io",
+        "image",
+        "images",
+        "imagemanipulation",
+        "twig"
+    ],
+    "homepage": "https://github.com/rokka-io/rokka-client-php-twig",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Stocker",
+            "email": "me@chregu.tv",
+            "homepage": "http://chregu.tv",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "rokka/client": "dev-templatehelper as 0.11.x-dev",
+        "twig/twig": "~1.0|~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rokka\\Twig\\": "src/"
+        }
+    }
+}
