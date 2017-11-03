@@ -22,7 +22,7 @@
     ],
     "require": {
         "php": "^7.0",
-        "rokka/client": "dev-templatehelper as 0.11.x-dev",
+        "rokka/client": "dev-templatehelper as 1.0.0-dev",
         "twig/twig": "~1.0|~2.0"
     },
     "autoload": {
