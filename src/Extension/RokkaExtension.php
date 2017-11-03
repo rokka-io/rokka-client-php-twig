@@ -2,6 +2,8 @@
 
 namespace Rokka\Twig\Extension;
 
+use Rokka\Client\TemplateHelperCallbacksAbstract;
+use Rokka\Twig\Resolver\ResolverInterface;
 use Twig_SimpleFilter;
 use Twig_SimpleFunction;
 
@@ -12,9 +14,13 @@ class RokkaExtension extends \Twig_Extension
      */
     private $rokka;
 
-    public function __construct(string $org, string $key, string $webDir, TemplateHelperCallbacksAbstract $callbacks = null, $publicRokkaDomain = null)
+    public function __construct(string $org, string $key, TemplateHelperCallbacksAbstract $callbacks = null, $publicRokkaDomain = null, RokkaRuntimeExtension $runtime = null)
     {
-        $this->rokka = new RokkaRuntimeExtension($org, $key, $webDir, $callbacks, $publicRokkaDomain);
+        if (null === $runtime) {
+            $this->rokka = new RokkaRuntimeExtension($org, $key, $callbacks, $publicRokkaDomain);
+        } else {
+            $this->rokka = $runtime;
+        }
     }
 
     public function getFilters()
