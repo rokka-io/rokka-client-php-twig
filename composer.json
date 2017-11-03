@@ -8,7 +8,8 @@
         "image",
         "images",
         "imagemanipulation",
-        "twig"
+        "twig",
+        "twig-extension"
     ],
     "homepage": "https://github.com/rokka-io/rokka-client-php-twig",
     "license": "MIT",
