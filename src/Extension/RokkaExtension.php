@@ -14,7 +14,7 @@ use Twig_SimpleFunction;
 class RokkaExtension extends \Twig_Extension
 {
     /**
-     * @var RokkaRuntimeExtension
+     * @var TemplateHelper
      */
     private $rokka;
 
