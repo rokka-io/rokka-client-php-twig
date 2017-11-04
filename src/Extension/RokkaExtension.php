@@ -35,6 +35,7 @@ class RokkaExtension extends \Twig_Extension
             new Twig_SimpleFilter('rokka_stack_url', [$this, 'getStackUrl']),
             new Twig_SimpleFilter('rokka_resize_url', [$this, 'getResizeUrl']),
             new Twig_SimpleFilter('rokka_resizecrop_url', [$this, 'getResizeCropUrl']),
+            new Twig_SimpleFilter('rokka_original_size_url', [$this, 'getOriginalSizeUrl']),
             new Twig_SimpleFilter('rokka_src_attributes', [$this, 'getSrcAttributes'], ['is_safe' => ['html']]),
             new Twig_SimpleFilter('rokka_background_image_style', [$this, 'getBackgroundImageStyle'], ['is_safe' => ['html']]),
             new Twig_SimpleFilter('rokka_add_options', [$this, 'addOptions']),
@@ -50,22 +51,40 @@ class RokkaExtension extends \Twig_Extension
 
     public function getStackUrl($image, $stack, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
-        $image = $this->getImageObject($image);
-        return $this->rokka->getStackUrl($image, $stack, $format, $seo, $seoLanguage);
+        $imageObject = $this->getImageObject($image);
+        return $this->getNonEmptyUrl(
+            $this->rokka->getStackUrl($imageObject, $stack, $format, $seo, $seoLanguage),
+            $image
+        );
     }
 
     public function getResizeUrl($image, $width, $height = null, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
-        $image = $this->getImageObject($image);
-
-        return $this->rokka->getResizeUrl($image, $width, $height, $format, $seo, $seoLanguage);
+        $imageObject = $this->getImageObject($image);
+        return $this->getNonEmptyUrl(
+            $this->rokka->getResizeUrl($imageObject, $width, $height, $format, $seo, $seoLanguage),
+            $image
+        );
     }
 
     public function getResizeCropUrl($image, $width, $height, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
-        $image = $this->getImageObject($image);
-        return $this->rokka->getResizeCropUrl($image, $width, $height, $format, $seo, $seoLanguage);
+        $imageObject = $this->getImageObject($image);
+        return $this->getNonEmptyUrl(
+            $this->rokka->getResizeCropUrl($imageObject, $width, $height, $format, $seo, $seoLanguage),
+            $image
+        );
     }
+
+    public function getOriginalSizeUrl($image, $format = 'jpg', $seo = null, $seoLanguage = 'de')
+    {
+        $imageObject = $this->getImageObject($image);
+        return $this->getNonEmptyUrl(
+            $this->rokka->getOriginalSizeUrl($imageObject, $format, $seo, $seoLanguage),
+            $image
+        );
+    }
+
 
     public function getSrcAttributes(string $url, $multipliers = [2])
     {
@@ -85,6 +104,13 @@ class RokkaExtension extends \Twig_Extension
     public function generateRokkaUrl($hash, $stack, $format = 'jpg',  $seo = null, $seoLanguage = 'de')
     {
         return $this->rokka->generateRokkaUrl($hash, $stack, $format, $seo, $seoLanguage);
+    }
+
+    protected function getNonEmptyUrl($rokkaUrl, $originalUrl) {
+        if (!empty($rokkaUrl)) {
+            return $rokkaUrl;
+        }
+        return $originalUrl;
     }
 
     protected function getImageObject($image)

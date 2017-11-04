@@ -50,6 +50,12 @@ Input: filepath, SplFileInfo or \Rokka\Client\LocalImage\LocalImageAbstract
 Output: The rokka URL to the image with a dynamic stack which resized the image to 
 at least  `width` and `height` and crops it then with `width` and `height`
 
+`rokka_original_size_url(format = "jpg", seo = null, seoLanguage = "de")`
+
+Input: filepath, SplFileInfo or \Rokka\Client\LocalImage\LocalImageAbstract
+Output: The rokka URL to the image with the original size of the picture. 
+But optimized, compressed and delivered by rokka.
+
 `rokka_add_options(options)`
 
 Input: A rokka URL
