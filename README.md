@@ -17,7 +17,7 @@ For this develop release, add the following to your composer.json
 
 and run `composer update`. 
 
-When we released rokka/client 1.1.0, the following command will be enough
+Once we have released rokka/client 1.1.0, the following command will be enough
 
 ```
 composer require rokka/twig`
