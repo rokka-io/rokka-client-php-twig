@@ -2,6 +2,7 @@
 
 namespace Rokka\Twig\Extension;
 
+use Rokka\Client\Base as ClientBase;
 use Rokka\Client\LocalImage\LocalImageAbstract;
 use Rokka\Client\TemplateHelper;
 use Rokka\Client\TemplateHelperCallbacksAbstract;
@@ -22,11 +23,16 @@ class RokkaExtension extends \Twig_Extension
      */
     private $resolver = null;
 
-    public function __construct(string $org, string $key, TemplateHelperCallbacksAbstract $callbacks = null, $publicRokkaDomain = null, ResolverInterface $resolver = null)
-    {
-        $this->rokka = new TemplateHelper($org, $key, $callbacks, $publicRokkaDomain);
+    public function __construct(
+        string $organization,
+        string $apiKey,
+        TemplateHelperCallbacksAbstract $callbacks = null,
+        string $publicRokkaDomain = null,
+        ResolverInterface $resolver = null,
+        string $rokkaApiHost = ClientBase::DEFAULT_API_BASE_URL
+    ) {
+        $this->rokka = new TemplateHelper($organization, $apiKey, $callbacks, $publicRokkaDomain, $rokkaApiHost);
         $this->resolver = $resolver;
-
     }
 
     public function getFilters()
