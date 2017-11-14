@@ -80,7 +80,7 @@ Output: A rokka URL with the hash and the stack. And an "seo"-filename, if set.
 
 ## Storing and reading hashes
 
-By default, the plugin stores a json file next to each image with the rokka hash, after it uploaded it. If you want to overwrite this behaviour (for example storing it in a database), you have to implement the `\Rokka\Client\TemplateHelperCallbacksAbstract` interface and provide that as 3rd option to the RokkaExtension` constructor.
+By default, the plugin stores a json file next to each image with the rokka hash, after it uploaded it. If you want to overwrite this behaviour (for example storing it in a database), you have to implement the `\Rokka\Client\TemplateHelperCallbacksAbstract` interface and provide that as 3rd option to the `RokkaExtension` constructor.
 
 ## Non standard file locations
 
