@@ -11,7 +11,7 @@ Stable release coming soon.
 For this develop release, add the following to your composer.json
 
 ```
-   "rokka/client": "dev-templatehelper as 1.1.0-dev",
+   "rokka/client": "dev-templatehelper as 1.2.0-dev",
    "rokka/twig": "dev-develop as 0.1-dev",
 ```
 
