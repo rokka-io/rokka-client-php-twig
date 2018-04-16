@@ -3,9 +3,9 @@
 namespace Rokka\Twig\Extension;
 
 use Rokka\Client\Base as ClientBase;
-use Rokka\Client\LocalImage\LocalImageAbstract;
+use Rokka\Client\LocalImage\AbstractLocalImage;
 use Rokka\Client\TemplateHelper;
-use Rokka\Client\TemplateHelperCallbacksAbstract;
+use Rokka\Client\TemplateHelper\AbstractCallbacks;
 use Rokka\Client\UriHelper;
 use Rokka\Twig\Resolver\ResolverInterface;
 use Twig_SimpleFilter;
@@ -26,7 +26,7 @@ class RokkaExtension extends \Twig_Extension
     public function __construct(
         string $organization,
         string $apiKey,
-        TemplateHelperCallbacksAbstract $callbacks = null,
+        AbstractCallbacks $callbacks = null,
         string $publicRokkaDomain = null,
         ResolverInterface $resolver = null,
         string $rokkaApiHost = ClientBase::DEFAULT_API_BASE_URL
@@ -121,7 +121,7 @@ class RokkaExtension extends \Twig_Extension
 
     protected function getImageObject($image)
     {
-        if ($image instanceof LocalImageAbstract) {
+        if ($image instanceof AbstractLocalImage) {
             return $image;
         }
         if ($this->resolver) {
