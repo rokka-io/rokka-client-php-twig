@@ -58,6 +58,7 @@ class RokkaExtension extends \Twig_Extension
     public function getStackUrl($image, $stack, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
         $imageObject = $this->getImageObject($image);
+
         return $this->getNonEmptyUrl(
             $this->rokka->getStackUrl($imageObject, $stack, $format, $seo, $seoLanguage),
             $image
@@ -67,6 +68,7 @@ class RokkaExtension extends \Twig_Extension
     public function getResizeUrl($image, $width, $height = null, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
         $imageObject = $this->getImageObject($image);
+
         return $this->getNonEmptyUrl(
             $this->rokka->getResizeUrl($imageObject, $width, $height, $format, $seo, $seoLanguage),
             $image
@@ -76,6 +78,7 @@ class RokkaExtension extends \Twig_Extension
     public function getResizeCropUrl($image, $width, $height, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
         $imageObject = $this->getImageObject($image);
+
         return $this->getNonEmptyUrl(
             $this->rokka->getResizeCropUrl($imageObject, $width, $height, $format, $seo, $seoLanguage),
             $image
@@ -85,12 +88,12 @@ class RokkaExtension extends \Twig_Extension
     public function getOriginalSizeUrl($image, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
         $imageObject = $this->getImageObject($image);
+
         return $this->getNonEmptyUrl(
             $this->rokka->getOriginalSizeUrl($imageObject, $format, $seo, $seoLanguage),
             $image
         );
     }
-
 
     public function getSrcAttributes(string $url, $multipliers = [2])
     {
@@ -107,15 +110,17 @@ class RokkaExtension extends \Twig_Extension
         return UriHelper::addOptionsToUriString($url, $options);
     }
 
-    public function generateRokkaUrl($hash, $stack, $format = 'jpg',  $seo = null, $seoLanguage = 'de')
+    public function generateRokkaUrl($hash, $stack, $format = 'jpg', $seo = null, $seoLanguage = 'de')
     {
         return $this->rokka->generateRokkaUrl($hash, $stack, $format, $seo, $seoLanguage);
     }
 
-    protected function getNonEmptyUrl($rokkaUrl, $originalUrl) {
+    protected function getNonEmptyUrl($rokkaUrl, $originalUrl)
+    {
         if (!empty($rokkaUrl)) {
             return $rokkaUrl;
         }
+
         return $originalUrl;
     }
 
@@ -127,7 +132,7 @@ class RokkaExtension extends \Twig_Extension
         if ($this->resolver) {
             return $this->resolver->resolve($image);
         }
+
         return $image;
     }
-
 }

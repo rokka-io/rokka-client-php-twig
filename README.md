@@ -90,3 +90,10 @@ You can write your own class to define, where your image is stored (if it's not 
 ## Symfony
 
 If you use symfony, we recommend using the [rokka Symfony Bundle](https://github.com/rokka-io/rokka-client-bundle) for easier setup.
+
+## Running PHP-CS-Fixer
+
+```
+curl http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar > /tmp/php-cs-fixer.phar
+php /tmp/php-cs-fixer.phar  fix -v --diff --using-cache=yes src/
+```
