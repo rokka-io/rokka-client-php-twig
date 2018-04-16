@@ -130,7 +130,7 @@ class RokkaExtension extends \Twig_Extension
             return $image;
         }
         if ($this->resolver) {
-            return $this->resolver->resolve($image);
+            return $this->resolver->resolve($image, $this->rokka);
         }
 
         return $image;

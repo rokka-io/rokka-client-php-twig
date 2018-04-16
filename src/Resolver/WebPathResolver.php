@@ -2,7 +2,7 @@
 
 namespace Rokka\Twig\Resolver;
 
-use Rokka\Client\LocalImage\LocalImageAbstract;
+use Rokka\Client\LocalImage\AbstractLocalImage;
 use Rokka\Client\TemplateHelper;
 
 class WebPathResolver implements ResolverInterface
@@ -17,12 +17,18 @@ class WebPathResolver implements ResolverInterface
         $this->webDir = $webDir;
     }
 
-    public function resolve($image): LocalImageAbstract
+    /**
+     * @param AbstractLocalImage|string|\SplFileInfo $image
+     * @param TemplateHelper                         $templateHelper
+     *
+     * @return AbstractLocalImage
+     */
+    public function resolve($image, $templateHelper): AbstractLocalImage
     {
         if (is_string($image)) {
-            return TemplateHelper::getImageObject(realpath($this->webDir.$image));
+            return $templateHelper->getImageObject(realpath($this->webDir.$image));
         }
 
-        return TemplateHelper::getImageObject($image);
+        return $templateHelper->getImageObject($image);
     }
 }
