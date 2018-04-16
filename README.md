@@ -24,6 +24,7 @@ composer require rokka/twig`
 ``` 
 
 Add the following code to your Twig_Environment setup:
+
 ```
 $twig->addExtension(new \Rokka\Twig\Extension\RokkaExtension('your_rokka_organistaion', 'your_api_key'));
 
@@ -88,4 +89,4 @@ You can write your own class to define, where your image is stored (if it's not 
 
 ## Symfony
 
-If you use symfony, we recomment using the [rokka Symfony Bundle](https://github.com/rokka-io/rokka-client-bundle)
+If you use symfony, we recommend using the [rokka Symfony Bundle](https://github.com/rokka-io/rokka-client-bundle) for easier setup.
