@@ -8,16 +8,6 @@ Stable release coming soon.
 
 ## Installation
 
-For this develop release, add the following to your composer.json
-
-```
-   "rokka/client": "dev-templatehelper as 1.2.0-dev",
-   "rokka/twig": "dev-develop as 0.1-dev",
-```
-
-and run `composer update`. 
-
-Once we have released rokka/client 1.1.0, the following command will be enough
 
 ```
 composer require rokka/twig`
