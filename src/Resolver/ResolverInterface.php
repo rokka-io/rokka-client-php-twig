@@ -13,5 +13,5 @@ interface ResolverInterface
      *
      * @return AbstractLocalImage
      */
-    public function resolve($image, $templateHelper): AbstractLocalImage;
+    public function resolve($image, $templateHelper);
 }

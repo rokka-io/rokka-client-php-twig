@@ -23,7 +23,7 @@ class WebPathResolver implements ResolverInterface
      *
      * @return AbstractLocalImage
      */
-    public function resolve($image, $templateHelper): AbstractLocalImage
+    public function resolve($image, $templateHelper)
     {
         if (is_string($image)) {
             return $templateHelper->getImageObject(realpath($this->webDir.$image));

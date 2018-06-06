@@ -88,8 +88,6 @@ curl http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar > /tmp/php-cs-fixer.
 php /tmp/php-cs-fixer.phar  fix -v --diff --using-cache=yes src/
 ```
 
-
-
 TODO: 
 - Examples
 - ResolverInterface still needed?
