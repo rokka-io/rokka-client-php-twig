@@ -9,7 +9,6 @@
         "images",
         "imagemanipulation",
         "twig",
-        "twig-extension",
         "twig extension"
     ],
     "homepage": "https://github.com/rokka-io/rokka-client-php-twig",
