@@ -26,9 +26,19 @@ class WebPathResolver implements ResolverInterface
     public function resolve($image, $templateHelper)
     {
         if (\is_string($image)) {
-            return $templateHelper->getImageObject(realpath($this->webDir.$image));
+            return $templateHelper->getImageObject($this->realpath($this->webDir.$image));
         }
 
         return $templateHelper->getImageObject($image);
+    }
+
+    private function realpath($path)
+    {
+        $realpath = realpath($path);
+        if (false === $realpath) {
+            throw new \RuntimeException('Image file not found at '.$path);
+        }
+
+        return $realpath;
     }
 }
