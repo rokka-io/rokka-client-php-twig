@@ -7,9 +7,9 @@ filters operate on rokka URLs to add stack options.
 
 When working with file references, this extension can upload image files to rokka as necessary. Uploading on the fly
 introduces a considerable overhead. If you build a CMS, we recommend to upload images to rokka on creation or in a
-background process, and work with the rokka hash in the template, to avoid the first rendering taking a performance hit.
-The main use case for uploading on the fly is static site generators where you pre-render the pages and then deploy the
-rendered code.
+background process, and use the rokka image hash with the `rokka_generate_url` twig function in the template, to avoid
+the first rendering taking a performance hit. The main use case for uploading on the fly is static site generators where
+you pre-render the pages and then deploy the rendered code.
 
 ## Installation
 
@@ -20,7 +20,7 @@ automatically installed and registered.
 composer require rokka/twig`
 ```
 
-Add the following code to your Twig_Environment setup:
+Add the following code to your `Twig\Environment` setup:
 
 ```
 $twig->addExtension(new \Rokka\Twig\Extension\RokkaExtension('your_rokka_organistaion', 'your_api_key'));
@@ -131,6 +131,11 @@ Output: A rokka URL for the specified image hash and stack, with the "seo"-filen
 ## Running PHP-CS-Fixer
 
 ```
-curl http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar > /tmp/php-cs-fixer.phar
-php /tmp/php-cs-fixer.phar  fix -v --diff --using-cache=yes src/
+composer cs:fix
+```
+
+## Running phpstan
+
+```
+composer phpstan
 ```
