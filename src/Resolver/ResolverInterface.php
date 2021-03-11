@@ -9,9 +9,8 @@ interface ResolverInterface
 {
     /**
      * @param AbstractLocalImage|string|\SplFileInfo $image
-     * @param TemplateHelper                         $templateHelper
      *
      * @return AbstractLocalImage
      */
-    public function resolve($image, $templateHelper);
+    public function resolve($image, TemplateHelper $templateHelper);
 }
