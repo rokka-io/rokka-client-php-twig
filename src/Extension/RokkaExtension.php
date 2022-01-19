@@ -36,7 +36,7 @@ class RokkaExtension extends AbstractExtension
         $this->resolver = $resolver;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('rokka_stack_url', [$this, 'getStackUrl']),
@@ -49,7 +49,7 @@ class RokkaExtension extends AbstractExtension
         ];
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('rokka_generate_url', [$this, 'generateRokkaUrl']),
