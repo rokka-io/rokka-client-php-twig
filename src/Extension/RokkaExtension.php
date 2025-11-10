@@ -22,15 +22,15 @@ class RokkaExtension extends AbstractExtension
     /**
      * @var ResolverInterface|null
      */
-    private $resolver = null;
+    private $resolver;
 
     public function __construct(
         string $organization,
         string $apiKey,
-        AbstractCallbacks $callbacks = null,
-        string $publicRokkaDomain = null,
-        ResolverInterface $resolver = null,
-        string $rokkaApiHost = ClientBase::DEFAULT_API_BASE_URL
+        ?AbstractCallbacks $callbacks = null,
+        ?string $publicRokkaDomain = null,
+        ?ResolverInterface $resolver = null,
+        string $rokkaApiHost = ClientBase::DEFAULT_API_BASE_URL,
     ) {
         $this->rokka = new TemplateHelper($organization, $apiKey, $callbacks, $publicRokkaDomain, $rokkaApiHost);
         $this->resolver = $resolver;
@@ -103,7 +103,7 @@ class RokkaExtension extends AbstractExtension
      * @param string|null                            $seo         if you want a different seo string than the image file name
      * @param string                                 $seoLanguage Optional language to be used for slugifying (eg. 'de' slugifies 'ö' to 'oe')
      */
-    public function getResizeCropUrl($image, int $width, int $height, string $format = 'jpg', string $seo = null, string $seoLanguage = 'de'): string
+    public function getResizeCropUrl($image, int $width, int $height, string $format = 'jpg', ?string $seo = null, string $seoLanguage = 'de'): string
     {
         $imageObject = $this->getImageObject($image);
 
@@ -116,7 +116,7 @@ class RokkaExtension extends AbstractExtension
     /**
      * @param AbstractLocalImage|string|\SplFileInfo $image
      */
-    public function getOriginalSizeUrl($image, string $format = 'jpg', string $seo = null, string $seoLanguage = 'de'): string
+    public function getOriginalSizeUrl($image, string $format = 'jpg', ?string $seo = null, string $seoLanguage = 'de'): string
     {
         $imageObject = $this->getImageObject($image);
 
@@ -150,7 +150,7 @@ class RokkaExtension extends AbstractExtension
         return UriHelper::addOptionsToUriString($url, $options);
     }
 
-    public function generateRokkaUrl(string $hash, string $stack, string $format = 'jpg', string $seo = null, string $seoLanguage = 'de'): string
+    public function generateRokkaUrl(string $hash, string $stack, string $format = 'jpg', ?string $seo = null, string $seoLanguage = 'de'): string
     {
         return $this->rokka->generateRokkaUrl($hash, $stack, $format, $seo, $seoLanguage);
     }
